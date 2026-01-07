@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: co-service-ingress
+  namespace: co-service
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: app.minhdevhaika.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: co-service-fe-service
+            port:
+              number: 80
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: co-service-be-service
+            port:
+              number: 80

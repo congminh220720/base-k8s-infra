@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: co-service
+  name: co-service-fe-deployment
+  labels:
+    app: co-service-fe
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: co-service-fe
+  template:
+    metadata:
+      labels:
+        app: co-service-fe
+    spec:
+      containers:
+      - name: nginx
+        image: congminh22/k8s-frontend:1.2
+        ports:
+        - containerPort: 80

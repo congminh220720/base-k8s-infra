@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>K8s Frontend</title>
+  </head>
+  <body>
+    <h1>Frontend is running 🎉</h1>
+    <button onclick="callBackend()">Call Backend</button>
+    <pre id="result"></pre>
+
+    <script>
+      function callBackend() {
+        fetch("/api/health")
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("result").innerText = JSON.stringify(
+              data,
+              null,
+              2
+            );
+          })
+          .catch((err) => {
+            document.getElementById("result").innerText = err.toString();
+          });
+      }
+    </script>
+  </body>
+</html>
