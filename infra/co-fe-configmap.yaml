@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: co-fe-configmap
+  namespace: co-service
+data:
+  config.js: |
+    window.__ENV__ = {
+      API_BASE_URL: "/api",
+      ENV: "production"
+    };

@@ -11,7 +11,7 @@ spec:
       paths:
       - path: /
         pathType: Prefix
-        backend:
+        frontend:
           service:
             name: co-service-fe-service
             port:

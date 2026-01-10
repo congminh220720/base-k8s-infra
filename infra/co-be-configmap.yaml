@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: co-be-configmap
+  namespace: co-service
+data:
+  APP_NAME: "co-backend"
+  APP_ENV: "production"
+  PORT: "3000"

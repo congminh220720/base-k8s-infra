@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - app.minhdevhaika.cloud
+    secretName: app-tls
+  rules:
+  - host: app.minhdevhaika.cloud
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        frontend:
+          service:
+            name: co-service-fe-service
+            port:
+              number: 80
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: co-service-be-service
+            port:
+              number: 80

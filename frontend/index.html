@@ -11,7 +11,9 @@
 
     <script>
       function callBackend() {
-        fetch("/api/health")
+        const baseUrl = window.__ENV__?.API_BASE_URL || "/api";
+
+        fetch(baseUrl + "/health")
           .then((res) => res.json())
           .then((data) => {
             document.getElementById("result").innerText = JSON.stringify(
